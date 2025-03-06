@@ -1,0 +1,14 @@
+[
+    {
+        "tarea": "Estudiar Python",
+        "completado": false
+    },
+    {
+        "tarea": "Hacer ejercicio",
+        "completado": true
+    },
+    {
+        "tarea": "hacer tonterias",
+        "completed": true
+    }
+]
