@@ -34,7 +34,7 @@ def escribirjson(ruta, datos): #el primero es el archivo json a escribir y el se
     json.dump(datos, archivo, indent=4) # almacenamos en variable datos, una estructura de datos de Python {} [] lo convertimos a JSON
     #Esta funcion no retorna si no que modifica el Json que le pasemos con lo datos en pyton que le pasemos
 
-#vamos a crear una lista de diccionarios para pasarcela a un Json 
+#vamos a crear una lista de diccionarios para pasarla a un Json 
 tareas = [
     {"tarea": "Estudiar Python", "completado": False},
     {"tarea": "Hacer ejercicio", "completado": True},
@@ -42,3 +42,14 @@ tareas = [
 ]
 
 escribirjson("prueba.json", tareas) #si esxiste el archivo .josn lo crea, si existe lo sobre escribe
+
+#Hasta aqui es el a) Módulo de gestión de archivos JSON (Funciones para leer y escribir en los archivos JSON).
+
+#b) Módulo de gestión de países
+def listar_paises():
+    """Lista todos los países registrados en el sistema."""
+    paises = leer_json("paises.json") #Reutilizo la funcion que use antes para leer json
+    for pais in paises:
+        print(f"Nombre: {pais['nombre']}, Código ISO: {pais['codigo_iso']}, Código ISO3: {pais['codigo_iso3']}") #f permite leeer los diccionarios
+print("777777777777777777777777777777777777777777777777777777777777")
+listar_paises()
