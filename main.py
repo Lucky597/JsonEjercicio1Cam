@@ -21,6 +21,7 @@ print(datos)
 print("=====================================================")
 datos = leer_json("poblacion.json")
 print(datos)
+print("=====================================================")
 
 # HASTA AQUI """Lee un archivo JSON y devuelve su contenido como lista de diccionarios."""
 
@@ -51,5 +52,24 @@ def listar_paises():
     paises = leer_json("paises.json") #Reutilizo la funcion que use antes para leer json
     for pais in paises:
         print(f"Nombre: {pais['nombre']}, Código ISO: {pais['codigo_iso']}, Código ISO3: {pais['codigo_iso3']}") #f permite leeer los diccionarios
-print("777777777777777777777777777777777777777777777777777777777777")
+print("------------Módulo de gestión de países------------")
 listar_paises()
+
+#c) Módulo de gestión de población
+def obtener_poblacion_por_pais(pais, ano_inicio, ano_fin): #Idico pais, año desde, años hasta. Rango en que quiero ver la poblacion de ese pais 
+    """Devuelve los datos de población de un país en un rango de años con el formato deseado."""
+    datos = leer_json("poblacion.json")  #Reutilizo la funcion que use antes para leer json
+    
+    poblacion_filtrada = [
+        {"pais": p["pais"], "ano": p["ano"], "poblacion": p["valor"]} #esta creando un diccionario en la posicion p contantos diccionarios existan enel json
+        for p in datos
+        if p["pais"] == pais and ano_inicio <= p["ano"] <= ano_fin #compara si es el pais en esa posicion p "amd" luego mira si ano variable o llave esta entre el rango
+    ]
+    
+    return poblacion_filtrada #la lista de diccionarios creadda aaprtir laa informacion del json
+
+print("------------Módulo de gestión de población------------")
+resultado = obtener_poblacion_por_pais("India", 2000, 2023)
+print(resultado)
+
+
