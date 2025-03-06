@@ -61,7 +61,7 @@ def obtener_poblacion_por_pais(pais, ano_inicio, ano_fin): #Idico pais, año des
     datos = leer_json("poblacion.json")  #Reutilizo la funcion que use antes para leer json
     
     poblacion_filtrada = [
-        {"pais": p["pais"], "ano": p["ano"], "poblacion": p["valor"]} #esta creando un diccionario en la posicion p contantos diccionarios existan enel json
+        {"pais": p["pais"], "ano": p["ano"], "poblacion": p["valor"]} #esta creando un diccionario en la posicion p comotantos diccionarios existan enel json
         for p in datos
         if p["pais"] == pais and ano_inicio <= p["ano"] <= ano_fin #compara si es el pais en esa posicion p "amd" luego mira si ano variable o llave esta entre el rango
     ]
@@ -71,5 +71,15 @@ def obtener_poblacion_por_pais(pais, ano_inicio, ano_fin): #Idico pais, año des
 print("------------Módulo de gestión de población------------")
 resultado = obtener_poblacion_por_pais("India", 2000, 2023)
 print(resultado)
+
+#d) Módulo de reportes
+print("------------Módulo de reportes------------")
+def obtener_poblacion_total_india_2022():
+    """Obtiene la población total de India en 2022."""
+    datos = leer_json("poblacion.json")
+    for d in datos:
+        if d["pais"] == "India" and d["ano"] == 2022 and d["indicador_id"] == "SP.POP.TOTL":
+            return d["valor"]
+    return "No hay datos disponibles"
 
 
